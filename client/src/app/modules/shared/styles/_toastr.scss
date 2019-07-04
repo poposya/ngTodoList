@@ -1,0 +1,47 @@
+#toast-container {
+  > div {
+    opacity: 1;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    filter: alpha(opacity=100);
+  }
+  > .alert {
+    background-image: none !important;
+    &:before {
+      position: fixed;
+      font-family: FontAwesome, serif;
+      font-size: 24px;
+      float: left;
+      color: #FFF;
+      padding-right: 0.5em;
+      margin: auto 0.5em auto -1.5em;
+    }
+  }
+  > .alert-info {
+    color: #31708f;
+    &:before {
+      content: "\f05a";
+      color: #31708f;
+    }
+  }
+  > .alert-success {
+    color: #3c763d;
+    &:before {
+      content: "\f00c";
+      color: #3c763d;
+    }
+  }
+  > .alert-warning {
+    color: #8a6d3b;
+    &:before {
+      content: "\f06a";
+      color: #8a6d3b;
+    }
+  }
+  > .alert-danger {
+    color: #a94442;
+    &:before {
+      content: "\f071";
+      color: #a94442;
+    }
+  }
+}

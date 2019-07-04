@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Creating new Todo List</h2>
+  <hr>
+  <form [formGroup]="createNewTodoListForm">
+    <div class="inputs">
+      <mat-form-field>
+        <input matInput placeholder="Todo List name"
+               [ngClass]="{'is-invalid': (formSubmitted || f.name.dirty) && f.name.errors?.required}" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Todo Item name"
+               [ngClass]="{'is-invalid': (formSubmitted || f.itemName.dirty) && f.itemName.errors?.required}" formControlName="itemName">
+      </mat-form-field>
+    </div>
+    <div class="buttons">
+      <button type="button" (click)="addTodoItemToList()" mat-raised-button color="accent">Add todo item</button>
+      <button type="button" (click)="createTodoList()" mat-raised-button color="primary">Create Todo List</button>
+    </div>
+  </form>
+  <div *ngFor="let item of addedItems" class="todoItem">
+    <span class="itemName">{{item.itemName}}</span>
+    <mat-checkbox class="todo-status" [(ngModel)]="item.status"></mat-checkbox>
+  </div>
+</div>

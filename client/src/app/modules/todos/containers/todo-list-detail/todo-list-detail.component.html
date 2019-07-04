@@ -1,0 +1,54 @@
+<div class="container">
+  <h2 >{{todo$.name}}</h2>
+  <hr>
+  <form class="todoItemForm" [formGroup]="todoAddItemForm" *ngIf="todo$.items.length > 0">
+    <div class="todoAddItem">
+      <mat-form-field>
+        <input matInput placeholder="Todo item name"
+               [ngClass]="{'is-invalid': (formSubmitted || f.itemName.dirty) && f.itemName.errors?.required}" formControlName="itemName">
+      </mat-form-field>
+      <div class="todoAddItemNameError" *ngIf="(formSubmitted || f.itemName.dirty) && f.itemName.errors?.required">
+        Please, enter a todo item name
+      </div>
+    </div>
+    <button type="button" (click)="addTodo()" mat-raised-button color="primary">Add todo</button>
+  </form>
+  <ul *ngIf="todo$.items.length > 0; else empty_items" >
+    <li *ngFor="let item of todo$.items; let i = index">
+      <mat-form-field *ngIf="editableItem === i && editableFlag">
+        <input type="text" matInput [(ngModel)]="item.itemName" class="itemName" autofocus (keyup.enter)="editTodoListItem(i)">
+      </mat-form-field>
+      <button type="button" (click)="editTodoListItem(i)" mat-raised-button color="accent" *ngIf="editableItem === i && editableFlag">Save</button>
+      <span class="itemName" *ngIf="!editableFlag || editableItem !== i" (click)="editTodoListItem(i)">{{item.itemName}}</span>
+      <div class="todo-actions">
+        <mat-checkbox class="todo-status" [(ngModel)]="item.status"></mat-checkbox>
+        <button type="button" (click)="removeTodo(i)" mat-raised-button color="primary">Remove todo</button>
+      </div>
+    </li>
+  </ul>
+  <ng-template #empty_items>
+    <div class="noTodoItems">
+      <h4>There are not items</h4>
+      <div class="askingToAddNewTodoItems">
+        Do you want to add a new todo items?
+        <button type="button" (click)="toggleAddTodoItemField()" mat-raised-button color="accent">Yes, I do</button>
+      </div>
+    </div>
+  </ng-template>
+  <div class="todoAddItemField" *ngIf="showTodoItemField && todo$.items.length === 0">
+    <form class="todoItemForm" [formGroup]="todoAddItemForm">
+      <div class="items">
+        <div class="todoAddItem">
+          <mat-form-field>
+            <input matInput placeholder="Todo item name"
+                   [ngClass]="{'is-invalid': (formSubmitted || f.itemName.dirty) && f.itemName.errors?.required}" formControlName="itemName">
+          </mat-form-field>
+          <div class="todoAddItemNameError" *ngIf="(formSubmitted || f.itemName.dirty) && f.itemName.errors?.required">
+            Please, enter a todo item name
+          </div>
+        </div>
+      </div>
+      <button type="button" (click)="addTodo()" mat-raised-button color="primary">Add todo</button>
+    </form>
+  </div>
+</div>

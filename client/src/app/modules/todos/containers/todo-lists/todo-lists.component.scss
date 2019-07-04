@@ -1,0 +1,12 @@
+.list-group {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  app-todo-list {
+    margin-bottom: 10px;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

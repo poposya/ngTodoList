@@ -1,0 +1,27 @@
+form {
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    input {
+      width: 100%;
+    }
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    button {
+      outline: none;
+    }
+  }
+}
+.todoItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 15px;
+  &:hover {
+    background: rgba(0,0,0,.04);
+    cursor: pointer;
+  }
+}
