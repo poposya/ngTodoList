@@ -15,10 +15,10 @@ export class RestService {
 
   public Todos() {
     return {
-      getTodos: () => this.makeRequest("get", "getTodos"),
-      getTodoList: (todoListId: string) => this.makeRequest("get", `getTodoById/${todoListId}`),
-      saveTodoList: (payload: TodoList) => this.makeRequest("post", "saveTodoList", payload),
-      deleteTodoList: (todoListId: string) => this.makeRequest("delete", `deleteTodoListById/${todoListId}`),
+      getTodos: () => this.makeRequest("get", "todos"),
+      getTodoList: (todoListId: string) => this.makeRequest("get", `todo/${todoListId}`),
+      saveTodoList: (payload: TodoList) => this.makeRequest("post", "todo", payload),
+      deleteTodoList: (todoListId: string) => this.makeRequest("delete", `todo/${todoListId}`),
     };
   }
 

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "portinstall": "cd client && npm install && npm build"
+    "portinstall": "cd client && npm install && ng build --aot"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,10 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/register": "^7.4.4",
     "@babel/runtime": "^7.4.4",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "http": "0.0.0"
+    "http": "0.0.0",
+    "path": "^0.12.7"
   }
 }
