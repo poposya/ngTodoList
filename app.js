@@ -4,4 +4,4 @@ require("@babel/register")({
     "@babel/plugin-transform-runtime",
   ]
 });
-module.exports = require('./index.js')
+module.exports = require('./index.js');
